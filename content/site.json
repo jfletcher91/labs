@@ -130,6 +130,15 @@
     "intro": "Battle-tested products born from our client work, now available to every founder.",
     "items": [
       {
+        "visual": "stack",
+        "badge": "Platform",
+        "badgeColor": "blue",
+        "title": "Samosa",
+        "description": "Sample processing made simple: register, track and report on every sample from intake to result, with a full audit trail.",
+        "ctaLabel": "Explore Samosa",
+        "ctaUrl": "samosa/"
+      },
+      {
         "visual": "bars",
         "badge": "SaaS",
         "badgeColor": "blue",
