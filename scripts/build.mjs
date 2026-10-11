@@ -9,7 +9,7 @@ import { homePage, blogIndexPage, postPage, rssFeed, sitemap } from "./templates
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
-const STATIC = ["css", "js", "assets", "admin"];
+const STATIC = ["css", "js", "assets", "admin", "samosa"];
 
 async function write(rel, content) {
   const file = path.join(dist, rel);

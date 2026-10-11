@@ -53,7 +53,7 @@ test("post page renders title escaped", () => {
 
 test("build produces the site and skips drafts", async () => {
   const { posts } = await build();
-  for (const f of ["index.html", "blog/index.html", "blog/feed.xml", "sitemap.xml", "admin/index.html", "admin/vendor/marked.esm.js", "admin/vendor/templates.mjs"]) {
+  for (const f of ["index.html", "blog/index.html", "blog/feed.xml", "sitemap.xml", "admin/index.html", "samosa/index.html", "admin/vendor/marked.esm.js", "admin/vendor/templates.mjs"]) {
     assert.ok(existsSync(new URL(`../dist/${f}`, import.meta.url)), `${f} missing`);
   }
   for (const p of posts) assert.ok(existsSync(new URL(`../dist/blog/${p.slug}/index.html`, import.meta.url)));

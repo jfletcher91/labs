@@ -504,7 +504,7 @@ ${posts.slice(0, 20).map((p) => `  <item>
 
 export function sitemap(site, posts) {
   const root = site.settings.siteUrl.replace(/\/?$/, "/");
-  const urls = [root, `${root}blog/`, ...posts.map((p) => `${root}blog/${p.slug}/`)];
+  const urls = [root, `${root}blog/`, `${root}samosa/`, ...posts.map((p) => `${root}blog/${p.slug}/`)];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
