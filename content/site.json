@@ -10,30 +10,118 @@
   },
   "hero": {
     "eyebrow": "Innovation consultancy for builders",
-    "headline": "Where startups meet",
-    "rotatingWords": ["breakthrough tech.", "bold strategy.", "real AI.", "faster launches."],
-    "lead": "Colletti Labs partners with founders and forward-thinking teams to turn ambitious ideas into products, platforms, and growth — with the speed of a startup and the rigor of a lab.",
+    "headline": "Where startups meet!",
+    "rotatingWords": [
+      "breakthrough tech.",
+      "bold strategy.",
+      "real AI.",
+      "faster launches."
+    ],
+    "lead": "Colletti Labs partners with founders and forward-thinking teams to turn ambitious ideas into products, platforms, and growth — with the speed of a startup and the rigor of a lab. Yep!",
     "primaryCta": "Explore services",
     "secondaryCta": "Get the newsletter"
   },
   "stats": [
-    { "value": 60, "prefix": "", "suffix": "+", "label": "Startups launched" },
-    { "value": 250, "prefix": "$", "suffix": "M+", "label": "Client capital raised" },
-    { "value": 12, "prefix": "", "suffix": " wks", "label": "Avg. idea → MVP" },
-    { "value": 98, "prefix": "", "suffix": "%", "label": "Would partner again" }
+    {
+      "value": 60,
+      "prefix": "",
+      "suffix": "+",
+      "label": "Startups launched"
+    },
+    {
+      "value": 250,
+      "prefix": "$",
+      "suffix": "M+",
+      "label": "Client capital raised"
+    },
+    {
+      "value": 12,
+      "prefix": "",
+      "suffix": " wks",
+      "label": "Avg. idea → MVP"
+    },
+    {
+      "value": 98,
+      "prefix": "",
+      "suffix": "%",
+      "label": "Would partner again"
+    }
   ],
-  "marquee": ["Artificial Intelligence", "Product Strategy", "Venture Building", "Cloud Architecture", "Go-to-Market", "Automation", "Data Platforms", "Rapid Prototyping"],
+  "marquee": [
+    "Artificial Intelligence",
+    "Product Strategy",
+    "Venture Building",
+    "Cloud Architecture",
+    "Go-to-Market",
+    "Automation",
+    "Data Platforms",
+    "Rapid Prototyping"
+  ],
   "services": {
     "heading": "Everything you need to go from",
     "highlight": "zero to scale",
     "intro": "Plug in a senior team exactly where you need it — from first whiteboard sketch to post-launch growth.",
     "items": [
-      { "icon": "layers", "title": "Startup Advisory", "description": "Business model design, fundraising readiness, pitch narrative, and investor intros from operators who have been in the seat.", "tags": ["Strategy", "Fundraising", "Positioning"] },
-      { "icon": "layout", "title": "Product Strategy & Design", "description": "Discovery sprints, roadmaps, UX research, and pixel-perfect design systems that turn insight into products people love.", "tags": ["Discovery", "UX/UI", "Roadmaps"] },
-      { "icon": "spark", "title": "AI & Automation", "description": "Practical AI that ships: LLM copilots, intelligent workflows, and data pipelines that cut costs and unlock new revenue.", "tags": ["LLMs", "Agents", "MLOps"] },
-      { "icon": "code", "title": "MVP Engineering", "description": "Full-stack product teams that build scalable web and mobile MVPs in weeks — cloud-native, secure, and ready for real users.", "tags": ["Web", "Mobile", "Cloud"] },
-      { "icon": "leader", "title": "Fractional CTO", "description": "Senior technical leadership on demand: architecture, hiring, vendor selection, and engineering culture without the full-time cost.", "tags": ["Leadership", "Architecture", "Hiring"] },
-      { "icon": "growth", "title": "Growth & Go-to-Market", "description": "Launch playbooks, analytics, growth experiments, and pricing strategy to find product-market fit and scale what works.", "tags": ["Launch", "Analytics", "Pricing"] }
+      {
+        "icon": "layers",
+        "title": "Startup Advisory",
+        "description": "Business model design, fundraising readiness, pitch narrative, and investor intros from operators who have been in the seat.",
+        "tags": [
+          "Strategy",
+          "Fundraising",
+          "Positioning"
+        ]
+      },
+      {
+        "icon": "layout",
+        "title": "Product Strategy & Design",
+        "description": "Discovery sprints, roadmaps, UX research, and pixel-perfect design systems that turn insight into products people love.",
+        "tags": [
+          "Discovery",
+          "UX/UI",
+          "Roadmaps"
+        ]
+      },
+      {
+        "icon": "spark",
+        "title": "AI & Automation",
+        "description": "Practical AI that ships: LLM copilots, intelligent workflows, and data pipelines that cut costs and unlock new revenue.",
+        "tags": [
+          "LLMs",
+          "Agents",
+          "MLOps"
+        ]
+      },
+      {
+        "icon": "code",
+        "title": "MVP Engineering",
+        "description": "Full-stack product teams that build scalable web and mobile MVPs in weeks — cloud-native, secure, and ready for real users.",
+        "tags": [
+          "Web",
+          "Mobile",
+          "Cloud"
+        ]
+      },
+      {
+        "icon": "leader",
+        "title": "Fractional CTO",
+        "description": "Senior technical leadership on demand: architecture, hiring, vendor selection, and engineering culture without the full-time cost.",
+        "tags": [
+          "Leadership",
+          "Architecture",
+          "Hiring"
+        ]
+      },
+      {
+        "icon": "growth",
+        "title": "Growth & Go-to-Market",
+        "description": "Launch playbooks, analytics, growth experiments, and pricing strategy to find product-market fit and scale what works.",
+        "tags": [
+          "Launch",
+          "Analytics",
+          "Pricing"
+        ]
+      }
     ]
   },
   "products": {
@@ -41,28 +129,76 @@
     "highlight": "Lab",
     "intro": "Battle-tested products born from our client work, now available to every founder.",
     "items": [
-      { "visual": "bars", "badge": "SaaS", "badgeColor": "blue", "title": "LaunchPad OS", "description": "An all-in-one operating system for early-stage startups: OKRs, investor updates, runway modeling, and team rituals in one dashboard.", "ctaLabel": "Request early access", "ctaUrl": "#newsletter" },
-      { "visual": "orbit", "badge": "AI Toolkit", "badgeColor": "violet", "title": "Signal AI", "description": "Plug-and-play AI agents that monitor your market, summarize customer feedback, and surface the insights that move your roadmap.", "ctaLabel": "Join the waitlist", "ctaUrl": "#newsletter" },
-      { "visual": "stack", "badge": "Playbooks", "badgeColor": "pink", "title": "Founder Playbooks", "description": "Templates, frameworks, and video workshops covering validation, fundraising, hiring, and launch — the exact systems we use with clients.", "ctaLabel": "Get notified", "ctaUrl": "#newsletter" }
+      {
+        "visual": "bars",
+        "badge": "SaaS",
+        "badgeColor": "blue",
+        "title": "LaunchPad OS",
+        "description": "An all-in-one operating system for early-stage startups: OKRs, investor updates, runway modeling, and team rituals in one dashboard.",
+        "ctaLabel": "Request early access",
+        "ctaUrl": "#newsletter"
+      },
+      {
+        "visual": "orbit",
+        "badge": "AI Toolkit",
+        "badgeColor": "violet",
+        "title": "Signal AI",
+        "description": "Plug-and-play AI agents that monitor your market, summarize customer feedback, and surface the insights that move your roadmap.",
+        "ctaLabel": "Join the waitlist",
+        "ctaUrl": "#newsletter"
+      },
+      {
+        "visual": "stack",
+        "badge": "Playbooks",
+        "badgeColor": "pink",
+        "title": "Founder Playbooks",
+        "description": "Templates, frameworks, and video workshops covering validation, fundraising, hiring, and launch — the exact systems we use with clients.",
+        "ctaLabel": "Get notified",
+        "ctaUrl": "#newsletter"
+      }
     ]
   },
   "process": {
     "heading": "A lab-tested path from",
     "highlight": "idea to impact",
     "steps": [
-      { "title": "Discover", "description": "We dig into your market, users, and goals to find the sharpest opportunity and define what success looks like." },
-      { "title": "Experiment", "description": "Rapid prototypes and real-world tests validate the riskiest assumptions before big investments are made." },
-      { "title": "Build", "description": "Our product squads design and engineer the solution in tight sprints, shipping value every single week." },
-      { "title": "Scale", "description": "We launch, measure, and optimize — then hand off a strong team and system built to keep growing." }
+      {
+        "title": "Discover",
+        "description": "We dig into your market, users, and goals to find the sharpest opportunity and define what success looks like."
+      },
+      {
+        "title": "Experiment",
+        "description": "Rapid prototypes and real-world tests validate the riskiest assumptions before big investments are made."
+      },
+      {
+        "title": "Build",
+        "description": "Our product squads design and engineer the solution in tight sprints, shipping value every single week."
+      },
+      {
+        "title": "Scale",
+        "description": "We launch, measure, and optimize — then hand off a strong team and system built to keep growing."
+      }
     ]
   },
   "testimonials": {
     "heading": "Founders who",
     "highlight": "built with us",
     "items": [
-      { "quote": "Colletti Labs took us from a napkin sketch to a live product and a seed round in under four months. They feel like co-founders.", "name": "Maya R.", "role": "CEO, FinTech startup" },
-      { "quote": "Their AI team automated 40% of our support workload in six weeks. The ROI was obvious before the project even ended.", "name": "Daniel K.", "role": "COO, SaaS scale-up" },
-      { "quote": "As a fractional CTO, they gave us senior-level architecture and hiring strategy we simply couldn't have afforded full-time.", "name": "Aisha L.", "role": "Founder, HealthTech" }
+      {
+        "quote": "Colletti Labs took us from a napkin sketch to a live product and a seed round in under four months. They feel like co-founders.",
+        "name": "Maya R.",
+        "role": "CEO, FinTech startup"
+      },
+      {
+        "quote": "Their AI team automated 40% of our support workload in six weeks. The ROI was obvious before the project even ended.",
+        "name": "Daniel K.",
+        "role": "COO, SaaS scale-up"
+      },
+      {
+        "quote": "As a fractional CTO, they gave us senior-level architecture and hiring strategy we simply couldn't have afforded full-time.",
+        "name": "Aisha L.",
+        "role": "Founder, HealthTech"
+      }
     ]
   },
   "blog": {
