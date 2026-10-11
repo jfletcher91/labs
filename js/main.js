@@ -2,20 +2,8 @@
    Colletti Labs — landing page interactions
    ========================================================= */
 
-/**
- * Newsletter configuration.
- * Leave `endpoint` empty to run in demo mode (shows success without sending).
- * To go live, paste your provider's form action URL:
- *   - Mailchimp:  https://XXXX.us21.list-manage.com/subscribe/post?u=...&id=...   (mode: "no-cors")
- *   - Kit:        https://app.kit.com/forms/FORM_ID/subscriptions               (mode: "no-cors")
- *   - Formspree / Netlify / Zapier / your own API:  https://...                 (mode: "cors")
- * Field names sent: EMAIL, FNAME (rename in index.html if your provider expects others,
- * e.g. Kit uses "email_address" and "first_name").
- */
-const NEWSLETTER = {
-  endpoint: "",
-  mode: "no-cors",
-};
+// Content and settings (newsletter endpoint, share text, analytics) come from
+// content/site.json and are rendered into data-* attributes by the build.
 
 document.documentElement.classList.add("js");
 
@@ -70,7 +58,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setNav(fal
 window.matchMedia("(min-width: 861px)").addEventListener("change", (e) => { if (e.matches) setNav(false); });
 
 /* ---------- Active nav link on scroll ---------- */
-const navLinks = $$('.site-nav a[href^="#"]:not(.btn)');
+const navLinks = $$('.site-nav a[href^="#"]:not(.btn)'); // homepage only
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -83,7 +71,7 @@ const sectionObserver = new IntersectionObserver(
 navLinks.forEach((l) => { const s = $(l.getAttribute("href")); if (s) sectionObserver.observe(s); });
 
 /* ---------- Scroll reveal (with stagger inside grids) ---------- */
-$$(".card-grid, .product-grid, .quote-grid, .timeline").forEach((group) => {
+$$(".card-grid, .product-grid, .quote-grid, .timeline, .post-grid").forEach((group) => {
   $$(".reveal", group).forEach((el, i) => el.style.setProperty("--d", `${i * 0.08}s`));
 });
 const revealObserver = new IntersectionObserver(
@@ -232,6 +220,13 @@ if (window.matchMedia("(hover: hover)").matches) {
   }).observe(hero);
 })();
 
+/* ---------- Analytics events (GoatCounter, if enabled) ---------- */
+function trackEvent(name) {
+  if (window.goatcounter && typeof window.goatcounter.count === "function") {
+    window.goatcounter.count({ path: name, title: name, event: true });
+  }
+}
+
 /* ---------- Newsletter form ---------- */
 (function newsletter() {
   const form = $(".newsletter-form");
@@ -240,6 +235,9 @@ if (window.matchMedia("(hover: hover)").matches) {
   const msg = $(".form-msg", form);
   const button = $('button[type="submit"]', form);
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const endpoint = form.dataset.endpoint || "";
+  const mode = form.dataset.mode === "cors" ? "cors" : "no-cors";
+  const successText = form.dataset.success || "Watch your inbox for the next issue.";
 
   function show(text, type) {
     msg.textContent = text;
@@ -268,20 +266,21 @@ if (window.matchMedia("(hover: hover)").matches) {
     form.classList.add("loading");
     button.disabled = true;
     try {
-      if (NEWSLETTER.endpoint) {
-        const res = await fetch(NEWSLETTER.endpoint, {
+      if (endpoint) {
+        const res = await fetch(endpoint, {
           method: "POST",
-          mode: NEWSLETTER.mode,
+          mode,
           body: new FormData(form),
-          headers: NEWSLETTER.mode === "cors" ? { Accept: "application/json" } : undefined,
+          headers: mode === "cors" ? { Accept: "application/json" } : undefined,
         });
         // "no-cors" responses are opaque; treat as success. Otherwise check status.
-        if (NEWSLETTER.mode === "cors" && !res.ok) throw new Error(`HTTP ${res.status}`);
+        if (mode === "cors" && !res.ok) throw new Error(`HTTP ${res.status}`);
       } else {
         await new Promise((r) => setTimeout(r, 900)); // demo mode
       }
       const name = form.FNAME.value.trim();
-      show(`You're in${name ? `, ${name}` : ""}! Watch your inbox for the next Lab Notes. 🚀`, "success");
+      show(`You're in${name ? `, ${name}` : ""}! ${successText}`, "success");
+      trackEvent("newsletter-signup");
       form.classList.add("done");
     } catch (err) {
       console.error("Newsletter signup failed:", err);
@@ -296,8 +295,8 @@ if (window.matchMedia("(hover: hover)").matches) {
 /* ---------- Social sharing ---------- */
 (function share() {
   const url = window.location.href.split("#")[0];
-  const title = "Colletti Labs — Where Startups Meet Breakthrough Technology";
-  const text = "Check out Colletti Labs: strategy, product, and AI engineering for founders building the future.";
+  const title = document.title || document.body.dataset.shareTitle;
+  const text = document.body.dataset.shareText || "";
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(text);
 
@@ -307,17 +306,21 @@ if (window.matchMedia("(hover: hover)").matches) {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
     email: `mailto:?subject=${encodeURIComponent(title)}&body=${t}%0A%0A${u}`,
   };
-  $$("[data-share]").forEach((a) => { a.href = links[a.dataset.share]; });
+  $$("[data-share]").forEach((a) => {
+    a.href = links[a.dataset.share];
+    a.addEventListener("click", () => trackEvent(`share-${a.dataset.share}`));
+  });
 
   // Native share sheet on supported devices (most phones)
   const nativeBtn = $(".share-native");
-  if (navigator.share) {
+  if (nativeBtn && navigator.share) {
     nativeBtn.hidden = false;
     nativeBtn.addEventListener("click", () => navigator.share({ title, text, url }).catch(() => {}));
   }
 
   const copyBtn = $(".share-copy");
-  copyBtn.addEventListener("click", async () => {
+  copyBtn?.addEventListener("click", async () => {
+    trackEvent("share-copy-link");
     try {
       await navigator.clipboard.writeText(url);
     } catch {
@@ -333,4 +336,5 @@ if (window.matchMedia("(hover: hover)").matches) {
 })();
 
 /* ---------- Footer year ---------- */
-$(".year").textContent = new Date().getFullYear();
+const yearEl = $(".year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();

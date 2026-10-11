@@ -1,0 +1,13 @@
+{
+  "name": "colletti-labs-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/build.mjs && cd dist && python3 -m http.server 8000",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "marked": "17.0.6"
+  }
+}

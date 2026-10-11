@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!--
+    Security: scripts only from this site (no inline code), network calls only to GitHub and GoatCounter,
+    no plugins, no form posts, no <base> hijacking. Nothing on this page works without a GitHub token
+    that has write access to the repository.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src https://api.github.com https://*.goatcounter.com; frame-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Colletti Labs Admin</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <!-- ============ Sign in ============ -->
+  <section class="login" id="login" hidden>
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="../assets/favicon.svg" alt="" width="44" height="44" />
+        <div>
+          <h1>Colletti Labs Admin</h1>
+          <p>Sign in with a GitHub access token</p>
+        </div>
+      </div>
+
+      <form id="login-form" autocomplete="off">
+        <label for="token">GitHub access token</label>
+        <input id="token" type="password" spellcheck="false" autocomplete="off" placeholder="github_pat_…" required />
+        <label class="check"><input type="checkbox" id="remember" /> Keep me signed in on this device for 7 days</label>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+        <p class="form-error" id="login-error" role="alert"></p>
+      </form>
+
+      <details class="help">
+        <summary>How do I get a token? (2 minutes, one time)</summary>
+        <ol>
+          <li>Open <a id="token-link" target="_blank" rel="noopener">GitHub → New fine-grained token</a>.</li>
+          <li><b>Token name:</b> Colletti Labs Admin. <b>Expiration:</b> 90 days.</li>
+          <li><b>Repository access:</b> Only select repositories → pick <code class="repo-name"></code> (and <code class="drafts-name"></code> if you created it).</li>
+          <li><b>Permissions → Repository:</b> Contents: <b>Read and write</b>. Optional: Actions: <b>Read-only</b> (shows publish status).</li>
+          <li>Click <b>Generate token</b>, copy it, and paste it above.</li>
+        </ol>
+        <p>Only people whose token can write to the repository can sign in. The token stays in this browser and is sent only to GitHub.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ App ============ -->
+  <div class="app" id="app" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="side-brand" href="#/dashboard">
+        <img src="../assets/favicon.svg" alt="" width="30" height="30" />
+        <span>Colletti<b>Labs</b> <em>Admin</em></span>
+      </a>
+      <nav class="side-nav" aria-label="Admin">
+        <a href="#/dashboard" data-route="dashboard"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+        <a href="#/content" data-route="content"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Site content</a>
+        <a href="#/blog" data-route="blog"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Blog</a>
+        <a href="#/stats" data-route="stats"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Stats</a>
+        <a href="#/settings" data-route="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Settings</a>
+      </nav>
+      <div class="side-foot">
+        <a class="view-site" id="view-site" target="_blank" rel="noopener">View live site ↗</a>
+        <div class="who" id="who"></div>
+        <button class="btn btn-ghost btn-sm" id="sign-out" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+        <h1 id="page-title">Dashboard</h1>
+        <div class="topbar-actions" id="topbar-actions"></div>
+      </header>
+      <main class="view" id="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div class="boot" id="boot"><span class="spinner"></span></div>
+  <div class="toast-stack" id="toasts" aria-live="polite"></div>
+  <dialog class="modal" id="modal"><form method="dialog"><h2 id="modal-title"></h2><p id="modal-body"></p><div class="modal-actions"><button value="cancel" class="btn btn-ghost">Cancel</button><button value="ok" class="btn btn-danger" id="modal-ok">Confirm</button></div></form></dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
