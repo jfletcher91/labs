@@ -35,7 +35,10 @@ In `js/main.js`, set `NEWSLETTER.endpoint` to your provider's form action URL:
 Until an endpoint is set, the form runs in demo mode and shows the success message without sending anything.
 
 ## Deploy
-- **GitHub Pages:** Settings → Pages → deploy from branch, root folder. (`.nojekyll` is included.)
+Live at **https://jfletcher91.github.io/labs/**
+
+- **GitHub Pages (configured):** `.github/workflows/deploy-pages.yml` publishes the site on every push.
+  One-time setup: make the repo public (or use a paid plan), then Settings → Pages → Source: **GitHub Actions**.
 - **Netlify / Vercel:** import the repo; no build command, publish directory is the repo root.
 
-After deploying, change the `og:image` / `twitter:image` meta tags to absolute URLs (e.g. `https://yourdomain.com/assets/og-image.png`) so link previews render on every social network.
+If you move to a custom domain, update the `og:url`, `canonical`, `og:image`, and `twitter:image` URLs in `index.html`.
