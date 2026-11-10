@@ -175,7 +175,11 @@ export function previewPane() {
     pane,
     show(html) {
       scrollY = frame.contentWindow?.scrollY || 0;
-      frame.srcdoc = html.replace("<head>", '<head>\n  <base href="../" />');
+      // Make site-relative URLs absolute: the browser's preloader fetches srcdoc
+      // resources before it applies <base>, which would request them from /admin/.
+      const root = new URL("../", location.href).href;
+      const absolute = html.replace(/\b(href|src)="(?![a-z][a-z0-9+.-]*:|#|\/)/gi, `$1="${root}`);
+      frame.srcdoc = absolute.replace("<head>", `<head>\n  <base href="${root}" />`);
       frame.addEventListener("load", () => frame.contentWindow?.scrollTo(0, scrollY), { once: true });
     },
   };
